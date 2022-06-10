@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8d371788642f4077a184516287ba3b9c" Name="Diagram1">
+        <EntityTypeShape EntityType="Session4Model.Ratings" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Session4Model.Surveys" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="Session4Model.FK_Surveys_Q1" ManuallyRouted="false" />
+        <AssociationConnector Association="Session4Model.FK_Surveys_Q2" ManuallyRouted="false" />
+        <AssociationConnector Association="Session4Model.FK_Surveys_Q3" ManuallyRouted="false" />
+        <AssociationConnector Association="Session4Model.FK_Surveys_Q4" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

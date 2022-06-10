@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Session4Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Ratings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Surveys">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Departure" Type="nvarchar" MaxLength="4" />
+          <Property Name="Arrival" Type="nvarchar" MaxLength="4" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="1" />
+          <Property Name="CabinType" Type="nvarchar" MaxLength="20" />
+          <Property Name="Q1" Type="int" />
+          <Property Name="Q2" Type="int" />
+          <Property Name="Q3" Type="int" />
+          <Property Name="Q4" Type="int" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_Surveys_Q1">
+          <End Role="Ratings" Type="Self.Ratings" Multiplicity="0..1" />
+          <End Role="Surveys" Type="Self.Surveys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ratings">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Surveys">
+              <PropertyRef Name="Q1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Surveys_Q2">
+          <End Role="Ratings" Type="Self.Ratings" Multiplicity="0..1" />
+          <End Role="Surveys" Type="Self.Surveys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ratings">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Surveys">
+              <PropertyRef Name="Q2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Surveys_Q3">
+          <End Role="Ratings" Type="Self.Ratings" Multiplicity="0..1" />
+          <End Role="Surveys" Type="Self.Surveys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ratings">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Surveys">
+              <PropertyRef Name="Q3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Surveys_Q4">
+          <End Role="Ratings" Type="Self.Ratings" Multiplicity="0..1" />
+          <End Role="Surveys" Type="Self.Surveys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ratings">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Surveys">
+              <PropertyRef Name="Q4" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Session4ModelStoreContainer">
+          <EntitySet Name="Ratings" EntityType="Self.Ratings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Surveys" EntityType="Self.Surveys" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Surveys_Q1" Association="Self.FK_Surveys_Q1">
+            <End Role="Ratings" EntitySet="Ratings" />
+            <End Role="Surveys" EntitySet="Surveys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Surveys_Q2" Association="Self.FK_Surveys_Q2">
+            <End Role="Ratings" EntitySet="Ratings" />
+            <End Role="Surveys" EntitySet="Surveys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Surveys_Q3" Association="Self.FK_Surveys_Q3">
+            <End Role="Ratings" EntitySet="Ratings" />
+            <End Role="Surveys" EntitySet="Surveys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Surveys_Q4" Association="Self.FK_Surveys_Q4">
+            <End Role="Ratings" EntitySet="Ratings" />
+            <End Role="Surveys" EntitySet="Surveys" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Session4Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Ratings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Surveys" Relationship="Self.FK_Surveys_Q1" FromRole="Ratings" ToRole="Surveys" />
+          <NavigationProperty Name="Surveys1" Relationship="Self.FK_Surveys_Q2" FromRole="Ratings" ToRole="Surveys" />
+          <NavigationProperty Name="Surveys2" Relationship="Self.FK_Surveys_Q3" FromRole="Ratings" ToRole="Surveys" />
+          <NavigationProperty Name="Surveys3" Relationship="Self.FK_Surveys_Q4" FromRole="Ratings" ToRole="Surveys" />
+        </EntityType>
+        <EntityType Name="Surveys">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Departure" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Arrival" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="CabinType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Q1" Type="Int32" />
+          <Property Name="Q2" Type="Int32" />
+          <Property Name="Q3" Type="Int32" />
+          <Property Name="Q4" Type="Int32" />
+          <NavigationProperty Name="Ratings" Relationship="Self.FK_Surveys_Q1" FromRole="Surveys" ToRole="Ratings" />
+          <NavigationProperty Name="Ratings1" Relationship="Self.FK_Surveys_Q2" FromRole="Surveys" ToRole="Ratings" />
+          <NavigationProperty Name="Ratings2" Relationship="Self.FK_Surveys_Q3" FromRole="Surveys" ToRole="Ratings" />
+          <NavigationProperty Name="Ratings3" Relationship="Self.FK_Surveys_Q4" FromRole="Surveys" ToRole="Ratings" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_Surveys_Q1">
+          <End Role="Ratings" Type="Self.Ratings" Multiplicity="0..1" />
+          <End Role="Surveys" Type="Self.Surveys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ratings">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Surveys">
+              <PropertyRef Name="Q1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Surveys_Q2">
+          <End Role="Ratings" Type="Self.Ratings" Multiplicity="0..1" />
+          <End Role="Surveys" Type="Self.Surveys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ratings">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Surveys">
+              <PropertyRef Name="Q2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Surveys_Q3">
+          <End Role="Ratings" Type="Self.Ratings" Multiplicity="0..1" />
+          <End Role="Surveys" Type="Self.Surveys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ratings">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Surveys">
+              <PropertyRef Name="Q3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Surveys_Q4">
+          <End Role="Ratings" Type="Self.Ratings" Multiplicity="0..1" />
+          <End Role="Surveys" Type="Self.Surveys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ratings">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Surveys">
+              <PropertyRef Name="Q4" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Session4Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Ratings" EntityType="Self.Ratings" />
+          <EntitySet Name="Surveys" EntityType="Self.Surveys" />
+          <AssociationSet Name="FK_Surveys_Q1" Association="Self.FK_Surveys_Q1">
+            <End Role="Ratings" EntitySet="Ratings" />
+            <End Role="Surveys" EntitySet="Surveys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Surveys_Q2" Association="Self.FK_Surveys_Q2">
+            <End Role="Ratings" EntitySet="Ratings" />
+            <End Role="Surveys" EntitySet="Surveys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Surveys_Q3" Association="Self.FK_Surveys_Q3">
+            <End Role="Ratings" EntitySet="Ratings" />
+            <End Role="Surveys" EntitySet="Surveys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Surveys_Q4" Association="Self.FK_Surveys_Q4">
+            <End Role="Ratings" EntitySet="Ratings" />
+            <End Role="Surveys" EntitySet="Surveys" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Session4ModelStoreContainer" CdmEntityContainer="Session4Entities">
+          <EntitySetMapping Name="Ratings">
+            <EntityTypeMapping TypeName="Session4Model.Ratings">
+              <MappingFragment StoreEntitySet="Ratings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Surveys">
+            <EntityTypeMapping TypeName="Session4Model.Surveys">
+              <MappingFragment StoreEntitySet="Surveys">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Departure" ColumnName="Departure" />
+                <ScalarProperty Name="Arrival" ColumnName="Arrival" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="CabinType" ColumnName="CabinType" />
+                <ScalarProperty Name="Q1" ColumnName="Q1" />
+                <ScalarProperty Name="Q2" ColumnName="Q2" />
+                <ScalarProperty Name="Q3" ColumnName="Q3" />
+                <ScalarProperty Name="Q4" ColumnName="Q4" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
